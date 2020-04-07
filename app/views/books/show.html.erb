@@ -11,7 +11,8 @@
 			<table class="table table-striped">
 				<tbody>
 					<tr>
-						<th><%=attachment_image_tag @book.user, :profile_image, :fill,60, 60, format: 'jpeg',class:"profile_image" , fallback:"no_image.jpg" %></th>
+						<th> <%=render 'books/link',negishi1:@book.user%></th>
+
 					</tr>
 					<tr>
 						<th><h5>name</h5></th>
@@ -38,11 +39,8 @@
 			<table class="table table-hover table-inverse">
 				<tbody>
 					<tr>
-						<td><%=link_to user_path(@book.user) do %>
-							<%=attachment_image_tag @book.user, :profile_image, :fill,30, 30, format: 'jpeg',class:"profile_image" , fallback:"no_image.jpg" %><br>
-							<%=@book.user.name %>
-							<% end %></td>
-
+						<td><%=render 'books/list',negishi2:@book.user%></td>
+						
 							<td><%=@book.title%></td>
 							<td><%=@book.body%></td>
 							<% if current_user.id == @book.user_id %>
