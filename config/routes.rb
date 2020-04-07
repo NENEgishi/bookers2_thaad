@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'comments/index'
+  get 'comments/create'
+  get 'comments/destroy'
   devise_for :users
   root to: 'homes#top'
   get 'home/about'=>'homes#about'
@@ -6,6 +9,8 @@ Rails.application.routes.draw do
   # get 'user/sign_out'=> 'sessions#destroy'
   resources :books 
   resources :users
+  resource :likes
+  resource :comments
   # resources :books do 
   # 	resources :favorites 
   # end

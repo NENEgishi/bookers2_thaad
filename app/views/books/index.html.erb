@@ -29,9 +29,9 @@
 			</table>
 
 			<%= link_to '', edit_user_path(current_user),class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
-				<!-- 部分テンプレート -->
-		<%=render 'users/list',book:@book %>
-				<!-- 部分テンプレート -->
+			<!-- 部分テンプレート -->
+			<%=render 'users/list',book:@book %>
+			<!-- 部分テンプレート -->
 
 		</div>
 
@@ -43,6 +43,7 @@
 						<th></th>
 						<th>Title</th>
 						<th>Body</th>
+						<th></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -57,11 +58,36 @@
 						</td>
 						<td><%=link_to book.title,book%></td>
 						<td><%=book.body%></td>
-						<td></td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
+
+						<td>
+							<% if book.liked_by?(current_user) %>
+							<%= link_to likes_path(book_id: book.id), method: :delete do %>
+							<i class="fas fa-heart unlike-btn"></i>
+							　<%= book.likes.count %>
+							<% end %>
+
+							<% else %>
+
+							<%= link_to likes_path(book_id: book.id), method: :post do %>
+							<i class="far fa-heart like-btn" ></i>
+							<% end %>
+
+							<% end %>
+						</td>
+
+						<td><div class="comment-list bt style-2" id="comments">
+							<div class="float-wrapper">
+							<p>コメント数:
+							<div class="comment-count">
+							<%= book.comments.count %>
+							</div></p>
+							</div>
+							</td>
+
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
-</div>
