@@ -5,7 +5,7 @@
 			<table class="table table-striped">
 				<tbody>
 					<tr>
-						<th><%=attachment_image_tag current_user, :profile_image, :fill,60,60,format:'jpeg',class:"profile_image", fallback:"no_image.jpg",size:'40x40' %></th>
+						<th><%=render 'books/link',negishi1:current_user %></th>
 					</tr>
 					<tr>
 						<th><h5>name</h5></th>
@@ -37,7 +37,7 @@
 				<tbody>
 					<% @users.each do |user| %>
 					<tr>
-						<td><%=attachment_image_tag user, :profile_image, :fill,30,30,format:'jpeg',class:"profile_image",fallback:"no_image.jpg",size:'40x40' %>
+						<td><%=render 'users/mmm',negishi4:user %></td>
 							<td><%=user.name%></td>
 							<td><%=link_to 'Show',user_path(user) %></td>
 							<td></td>
